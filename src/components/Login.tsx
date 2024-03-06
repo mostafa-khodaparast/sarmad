@@ -8,8 +8,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom"
 
 type LoginFormProps = {
-  email: string,
-  password: string
+  email?: string,
+  password?: string
 }
 
 const formStyle: React.CSSProperties = {
@@ -44,16 +44,15 @@ const submitStyle: React.CSSProperties = {
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm()
-  const { isAuthenticated } = useSelector((state: object) => state.todos)
+  const { isAuthenticated } = useSelector((state) => state.todos)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [loginError, setLoginError] = useState('')
+ 
 
 
   const onsubmit = (data: LoginFormProps) => {
     dispatch(logIn(data))
     if (isAuthenticated) navigate('/todolist')
-    else setLoginError('wrong credentials')
   }
 
 
@@ -87,7 +86,6 @@ export default function Login() {
             render={({ message }) => <Text style={{ color: 'red' }}>{message}</Text>}
           />
           <button type="submit" style={submitStyle} >Login</button>
-          <Text style={{ color: 'red' }}>{loginError}</Text>
         </form>
       </Col>
     </Row>

@@ -6,8 +6,8 @@ import { addTodo } from "../redux/todoSlice"
 
 
 type AddTodoFormProps = {
-  id: number,
-  title: string
+  id?: number,
+  title?: string
 }
 
  const formStyle: React.CSSProperties = {

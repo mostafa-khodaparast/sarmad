@@ -39,8 +39,8 @@ export type TodoProps = {
 function TodoList() {
   const dispatch = useDispatch()
   const { loading, data } = useSelector(state => state.todos)
-  const [showAddTodoForm, setShowAddTodoForm] = useState<boolean>(false)
-  const [showEditTodoForm, setShowEditTodoForm] = useState<boolean>(false)
+  const [showAddTodoForm, setShowAddTodoForm] = useState(false)
+  const [showEditTodoForm, setShowEditTodoForm] = useState(false)
 
   useEffect(() => {
     dispatch(getTodos())
